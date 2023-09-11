@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TheaterSeatingChart {
@@ -50,7 +51,15 @@ public class TheaterSeatingChart {
 
     public static void requestPriceSelection() {
         System.out.print("Pick a price: ");
-        bookPrice(in.nextInt());
+        in.nextLine();
+        try{
+            bookPrice(in.nextInt());
+        }
+        catch (InputMismatchException e){
+            System.out.println("Invalid Input.");
+            requestPriceSelection();
+            return;
+        }
     }
 
     public static void bookPrice(int price) {
