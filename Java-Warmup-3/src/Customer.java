@@ -17,6 +17,6 @@ public class Customer {
     }
     @Override
     public String toString() {
-        return "{Name: " + name + ", Money: " + money + "}";
+        return name + " spent $" + money;
     }
 }

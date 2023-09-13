@@ -17,13 +17,15 @@ public class Store {
     }
     public ArrayList<Customer> getTopCustomers(int num){
         ArrayList<Customer> top = new ArrayList<>();
-        sales.sort((o1, o2) -> {
-            return (int) (o2.getMoney() * 100 - o1.getMoney() * 100);
-        });
-        for (int i = 0; i < num; i++) {
-            top.add(sales.get(i));
+        int runTimes = num;
+        if(runTimes > sales.size()) runTimes = num - (num - sales.size());
+        for(int i = 0; i < runTimes; i++){
+            Customer bestCustomer = new Customer("", -1);
+            for (Customer customer : sales) {
+                if(customer.getMoney() > bestCustomer.getMoney() && !top.contains(customer)) bestCustomer = customer;
+            }
+            top.add(bestCustomer);
         }
-        
         return top;
     }
 }
