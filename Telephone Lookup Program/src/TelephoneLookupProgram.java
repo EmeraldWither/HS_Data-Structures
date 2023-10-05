@@ -1,23 +1,33 @@
+/**
+ * Ishaan Sayal
+ * Data Structures Period 2
+ * 10/5/2023
+ */
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class TelephoneLookupProgram {
+public class TelephoneLookupProgram
+{
     private static final Scanner in = new Scanner(System.in);
     private static final ArrayList<Person> nameSorted = new ArrayList<>();
     private static final ArrayList<Person> numberSorted = new ArrayList<>();
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception
+    {
 
         Scanner in = new Scanner(new File("Telephone Lookup Program/directory.txt"));
-        while (in.hasNextLine()) {
+        while (in.hasNextLine())
+        {
             String name = in.nextLine();
             String phoneNumber = in.nextLine();
 
             nameSorted.add(new Person(name, phoneNumber));
             numberSorted.add(new Person(phoneNumber, name));
         }
+        //https://apps.timwhitlock.info/unicode/inspect?s=%EF%BB%BFAbercrombie%2C+Neil
         Collections.sort(nameSorted);
         Collections.sort(numberSorted);
 
@@ -25,9 +35,11 @@ public class TelephoneLookupProgram {
         askInputType();
     }
 
-    private static void askInputType() {
+    private static void askInputType()
+    {
         System.out.print("\nPick an input type (N)ame, (P)hone Number, or (E)xit: ");
-        switch (in.nextLine()) {
+        switch (in.nextLine())
+        {
             case "N":
                 askName();
                 break;
@@ -43,11 +55,13 @@ public class TelephoneLookupProgram {
         }
     }
 
-    public static void askName() {
+    public static void askName()
+    {
         System.out.print("Type in the name (Last, First): ");
         String name = in.nextLine();
         int index = Collections.binarySearch(nameSorted, new Person(name, "0"));
-        if(index < 0) {
+        if(index < 0)
+        {
             System.out.println("ERROR: Lookup Failed. That customer does not exist.");
             askInputType();
             return;
@@ -57,11 +71,13 @@ public class TelephoneLookupProgram {
         System.out.println("Name: " + person.getKey() + " | Phone #: " + person.getValue());
         askInputType();
     }
-    public static void askNumber() {
+    public static void askNumber()
+    {
         System.out.print("Type in the phone number (###-####): ");
         String price = in.nextLine();
         int index = Collections.binarySearch(numberSorted, new Person(price, "0"));
-         if(index < 0) {
+        if(index < 0)
+        {
             System.out.println("ERROR: Lookup Failed. That customer doess not exist.");
             askInputType();
             return;
