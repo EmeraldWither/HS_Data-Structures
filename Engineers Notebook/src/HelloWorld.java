@@ -1,19 +1,14 @@
 public class HelloWorld {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-
-        int [] values = new int[20];
-        for (int i = 0; i < values.length; i++) {
-            values[i] = i;
+        CommandListener[] commands = new CommandListener[3];
+        commands[0] = new PingCommand();
+        commands[1] = new ShutdownCommand();
+        commands[2] = new FireCommand();
+        for (CommandListener command : commands) {
+            System.out.println("Command Name: " + command.getCommandName());
+            command.onCommand("Ishaan");
+            System.out.println();
         }
-        int pos = 5;
-        int iterations = 0;
-        for(int i = pos + 1; i < values.length; i++) {
-            values[i - 1] = values[i];
-            iterations+=2;
-        }
-        System.out.println(iterations);
 
-        
     }
 }

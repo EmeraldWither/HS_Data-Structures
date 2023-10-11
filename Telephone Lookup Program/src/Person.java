@@ -1,6 +1,8 @@
 /**
-   An item with a key and a value.
-*/
+ * Ishaan Sayal
+ * Data Structures Period 2
+ * 10/5/2023
+ */
 public class Person implements Comparable<Person>
 {
    /**
@@ -38,7 +40,8 @@ public class Person implements Comparable<Person>
       return key.compareTo(other.key);
    }
    @Override
-   public String toString() {
+   public String toString() 
+   {
        return "Key: " + key + " Value: " + value;
    }
 
