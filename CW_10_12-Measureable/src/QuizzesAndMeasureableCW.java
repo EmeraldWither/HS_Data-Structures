@@ -1,4 +1,4 @@
-public class App {
+public class QuizzesAndMeasureableCW {
     public static void main(String[] args) throws Exception {
         System.out.println("part 1");
         Measureable[] values = new Measureable[5];
