@@ -36,6 +36,39 @@ public class Polynomial {
         });
     }
 
+    public Polynomial multiply(Polynomial poly) {
+        // do steps 1-4
+        LinkedList<Term> other = poly.terms;
+        ListIterator<Term> otherItr = other.listIterator();
+        while (otherItr.hasNext()) {
+            // step 1: add to the other list
+            Term term = otherItr.next();
+            int power = term.getPower();
+            int coefficents = term.getCoefficient();
+            int powers = term.getPower();
+            // step 2: loop through list looking for terms with thr same power
+            ListIterator<Term> itr = terms.listIterator();
+            while (itr.hasNext()) {
+                Term term2 = itr.next();
+                if (term.getCoefficient() == term2.getCoefficient()) {
+                    // step 2a: remove it
+                    itr.remove();
+                    // add to coefficents
+                    coefficents *= term2.getCoefficient();
+                    powers += term2.getPower();
+                }
+
+            }
+            Term term3 = new Term(coefficents, powers);
+            itr.add(term3);
+        }
+        // sort now
+        terms.sort((o1, o2) -> {
+            return o2.getPower() - o1.getPower();
+        });
+        return this;
+    }
+
     @Override
     public String toString() {
         boolean first = true;
@@ -51,6 +84,7 @@ public class Polynomial {
         }
         return text;
     }
+
     public void print() {
         System.out.println(this);
     }
