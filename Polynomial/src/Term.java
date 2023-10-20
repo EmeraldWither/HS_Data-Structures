@@ -21,6 +21,7 @@ public class Term {
         StringBuilder power = new StringBuilder();
         int modpow = this.power;
         while (modpow != 0) {
+            //loop over every digit to build the powers
             int pow = Math.abs(modpow) % 10;
             if(pow == 2) power.insert(0, "²"); //\u00B2
             if(pow == 3) power.insert(0, "³"); //\u00B3
@@ -32,7 +33,9 @@ public class Term {
             if(pow == 9) power.insert(0, "⁹"); //\u2079
             modpow /= 10;
         }
+        //if it is a power of 0, then it means that it is a number and not x
         if(this.power == 0) return coefficient + "";
+        //add negative powers
         if(this.power < 0) power.insert(0, "⁻"); //\u207B
         return coefficient + "x" + power;
     }
