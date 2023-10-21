@@ -1,25 +1,37 @@
+/**
+ * Ishaan Sayal
+ * Data Structures Period 2
+ * 10/24/2023
+ */
+
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class Polynomial {
+public class Polynomial
+{
     private LinkedList<Term> terms = new LinkedList<>();
 
-    public Polynomial(Term term) {
+    public Polynomial(Term term)
+    {
         terms.add(term);
     }
 
-    public void add(Polynomial poly) {
+    public void add(Polynomial poly)
+    {
         LinkedList<Term> other = poly.terms;
         // loop over our outer list to get the terms
-        for (Term term : other) {
+        for (Term term : other)
+        {
             // step 1: add to the other list
             int power = term.getPower();
             int coefficents = term.getCoefficient();
             // step 2: loop through list looking for terms with the same power
             ListIterator<Term> itr = terms.listIterator();
-            while (itr.hasNext()) {
+            while (itr.hasNext())
+            {
                 Term term2 = itr.next();
-                if (term2.getPower() == power) {
+                if (term2.getPower() == power)
+                {
                     // step 2a: remove it
                     itr.remove();
                     // add the coefficents together
@@ -36,24 +48,31 @@ public class Polynomial {
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public Polynomial multiply(Polynomial poly) {
+    public Polynomial multiply(Polynomial poly)
+    {
         LinkedList<Term> other = poly.terms;
 
         // create another list of our polynomaials that we will add together
         // after all the terms have been multiplied
         Polynomial[] polynomials = new Polynomial[this.terms.size()];
         int i = 0;
-        for (Term term : terms) {
+        for (Term term : terms)
+        {
             // step 1: loop over our list
             Polynomial p1 = null;
-            for (Term term2 : other) {
+            for (Term term2 : other)
+            {
                 // multiply coeffecients, and add power
                 int coefficent = term.getCoefficient() * term2.getCoefficient();
                 int power = term.getPower() + term2.getPower();
                 //if this is the 1st term, we should make it as such
-                if (p1 == null) {
+                if (p1 == null)
+                {
                     p1 = new Polynomial(new Term(coefficent, power));
-                } else {
+                }
+                else
+                {
+
                     //add the new term to the old one
                     p1.add(new Polynomial(new Term(coefficent, power)));
                 }
@@ -63,7 +82,8 @@ public class Polynomial {
             i++;
         }
         //add all of our terms together
-        for (int j = 1; j < polynomials.length; j++) {
+        for (int j = 1; j < polynomials.length; j++)
+        {
             polynomials[0].add(polynomials[j]);
         }
         this.terms = polynomials[0].terms;
@@ -72,13 +92,17 @@ public class Polynomial {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         boolean first = true;
         StringBuilder text = new StringBuilder();
-        for (Term term : terms) {
+        for (Term term : terms)
+        {
             //makes sure that the 1st number doesnt get a "+5x + 3"
-            if (!first) {
-                if (term.getCoefficient() >= 0) {
+            if (!first)
+            {
+                if (term.getCoefficient() >= 0)
+                {
                     text.append(" + ");
                 }
             }
@@ -89,7 +113,8 @@ public class Polynomial {
         return text.toString();
     }
 
-    public void print() {
+    public void print()
+    {
         System.out.println(this);
     }
 }

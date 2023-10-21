@@ -1,26 +1,38 @@
-public class Term {
+/**
+ * Ishaan Sayal
+ * Data Structures Period 2
+ * 10/24/2023
+ */
+
+public class Term
+{
     private final int coefficient;
     private final int power;
 
-    public Term(int coefficient, int power) {
+    public Term(int coefficient, int power)
+    {
         this.coefficient = coefficient;
         this.power = power;
     }
 
-    public int getCoefficient() {
+    public int getCoefficient()
+    {
         return this.coefficient;
     }
 
-    public int getPower() {
+    public int getPower()
+    {
         return power;
     }
 
     @SuppressWarnings("UnnecessaryUnicodeEscape")
     @Override
-    public String toString() {
+    public String toString()
+    {
         StringBuilder power = new StringBuilder();
         int modpow = this.power;
-        while (modpow != 0) {
+        while (modpow != 0)
+        {
             //loop over every digit to build the powers
             int pow = Math.abs(modpow) % 10;
             if(pow == 2) power.insert(0, "²"); //\u00B2
