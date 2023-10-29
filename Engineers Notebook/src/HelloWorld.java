@@ -1,41 +1,23 @@
-import java.util.LinkedList;
-import java.util.ListIterator;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class HelloWorld {
     public static void main(String[] args) throws Exception {
-        LinkedList<String> names = new LinkedList<>();
-        names.add("A");
-        names.add("B");
-        names.add("CEF");
-        names.add("CEFF");
-        names.add("DEFGH");
-        names.add("DEH");
-        names.add("1626e");
+        Set<String> friends = new HashSet<>();
+        friends.add("Gavin");
+        friends.add("Bhavi");
+        friends.add("Emilie");
+        System.out.println(friends);
 
-        ListIterator<String> listIterator = names.listIterator();
-        System.out.println("Inital List:");
-        while (listIterator.hasNext()) {
-            System.out.print(listIterator.next() + " ");
+        friends.add("Ugh");
+        friends.add("VII");
+        for(String s : friends){
+            System.out.println(s.hashCode());
         }
-        System.out.println();
-        listIterator = names.listIterator();
-        while (listIterator.hasNext()) {
-            String next = listIterator.next();
-            if (next.length() < 4)
-                listIterator.remove();
-        }
-        listIterator = names.listIterator();
-        System.out.println("\nOnly with strings size 4 or larger:");
-        while (listIterator.hasNext()) {
-            System.out.print(listIterator.next() + " ");
-        }
+        Set<String> treeSet = new TreeSet<>();
+        treeSet.addAll(friends);
 
-        ListIterator<String> iterator1 = names.listIterator();
-        ListIterator<String> iterator2 = names.listIterator();
-        System.out.println("\n");
-        iterator1.next();
-        iterator1.remove();
-        System.out.println(iterator2.next());
-
+        System.out.println(treeSet);
     }
 }
