@@ -2,14 +2,16 @@ package org.emeraldcraft.datastructures;
 
 public class ReverseHW {
     public static void main(String[] args) {
-        System.out.println(reverse(929));
+        System.out.println(reverse(123));
+        System.out.println(reverse(-123));
+        System.out.println(reverse(120));
     }
 
     public static int reverse(int i) {
-        if(i <= 9) return i;
-        int b = i % 10;
+        int abs = Math.abs(i);
+        if(abs <= 9) return i;
         int itr = 0;
-        for (int j = i; j >= 9; j/=10) itr++;
-        return b * (10 * itr) + reverse(i / 10);
+        for (int j = abs; j > 9; j/=10) itr++;
+        return (abs % 10 * (((int) Math.pow(10, itr))) + reverse(abs / 10)) * i / abs;
     }
 }
