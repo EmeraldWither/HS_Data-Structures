@@ -9,12 +9,12 @@ public class BankAccount {
 
     @Override
     public int hashCode() {
-        return this.accountID;
+        return this.name.hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
-        return ((BankAccount) obj).accountID == this.accountID;
+        return ((BankAccount) obj).name.equals(this.name);
     }
 
     @Override
