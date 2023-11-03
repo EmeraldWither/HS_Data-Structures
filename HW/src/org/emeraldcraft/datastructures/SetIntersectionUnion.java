@@ -48,9 +48,8 @@ public class SetIntersectionUnion {
     }
     public static TreeSet<Integer> intersection(TreeSet<Integer> set1, TreeSet<Integer> set2) {
         TreeSet<Integer> intersection = new TreeSet<>();
-        for (Integer i : set1) {
-            if(set2.contains(i)) intersection.add(i);
-        }
+        intersection.addAll(set1);
+        intersection.retainAll(set2);
         return intersection;
     }
     public static TreeSet<Integer> union(TreeSet<Integer> set1, TreeSet<Integer> set2) {
