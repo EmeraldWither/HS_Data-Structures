@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class BinaryNumber 
 {
     private int[] binNum;
-    private boolean overFlow = false;
+    private boolean overflow = false;
 
     /**
      * Creates a new binary number with 0's
@@ -64,7 +64,7 @@ public class BinaryNumber
         }
         if (carry != 0) 
         {
-            overFlow = true;
+            overflow = true;
             newNum = Arrays.copyOf(newNum, this.binNum.length + 1);
             newNum[binNum.length] += carry;
         }
@@ -75,7 +75,7 @@ public class BinaryNumber
     @Override
     public String toString() 
     {
-        if (overFlow)
+        if (overflow)
             return "Overflow";
         return Arrays.toString(binNum)
                 .replace("[", "")
@@ -141,6 +141,6 @@ public class BinaryNumber
      */
     public void clearOverflow() 
     {
-        overFlow = false;
+        overflow = false;
     }
 }
