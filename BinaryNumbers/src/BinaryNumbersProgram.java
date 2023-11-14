@@ -1,5 +1,8 @@
 public class BinaryNumbersProgram {
     public static void main(String[] args) throws Exception {
+        System.out.println("\n===========================================");
+        System.out.println("  All binary numbers are in Little Endian");
+        System.out.println("===========================================\n");
         BinaryNumber num1 = new BinaryNumber("10110");
         BinaryNumber num2 = new BinaryNumber("11100");
         num1.add(num2);

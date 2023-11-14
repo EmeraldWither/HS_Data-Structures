@@ -4,48 +4,57 @@
  * 11/13/2023
  */
 
- /**
-  * Represents a little-endian binary number.
-  */
+import java.util.Arrays;
+
+/**
+ * Represents a little-endian binary number.
+ */
 public class BinaryNumber {
-    private String binNum;
+    private int[] binNum;
     private boolean overFlow = false;
+
     /**
      * Creates a new binary number with 0's
+     * 
      * @param length size of the binary number
      */
     public BinaryNumber(int length) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < length; i++)
-            builder.append("0");
-        binNum = builder.toString();
+        binNum = new int[length];
     }
+
     /**
      * Creates a binary number which is represented by a string
+     * 
      * @param num
      */
     public BinaryNumber(String num) {
-        this.binNum = num;
+        binNum = new int[num.length()];
+        for (int i = 0; i < binNum.length; i++) {
+            binNum[i] = Character.getNumericValue(num.charAt(i));
+        }
     }
+
     /**
      * Adds the other binary number to this binary number.
      * Only this binary number is modified
+     * 
      * @param other The other binary number
      */
     public void add(BinaryNumber other) {
         int carry = 0;
-        String newNum = "";
-        for (int i = 0; i < this.binNum.length(); i++) {
+        int[] newNum = new int[this.binNum.length];
+        for (int i = 0; i < this.binNum.length; i++) {
 
-            int num1 = Character.getNumericValue(binNum.charAt(i));
-            int num2 = Character.getNumericValue(other.binNum.charAt(i));
+            int num1 = binNum[i];
+            int num2 = other.binNum[i];
 
-            newNum += (num1 + num2 + carry) % 2;
+            newNum[i] = (num1 + num2 + carry) % 2;
             carry = (num1 + num2 + carry) >= 2 ? 1 : 0;
         }
         if (carry != 0) {
             overFlow = true;
-            newNum += carry;
+            newNum = Arrays.copyOf(newNum, this.binNum.length + 1);
+            newNum[binNum.length] += carry;
         }
 
         binNum = newNum;
@@ -55,17 +64,22 @@ public class BinaryNumber {
     public String toString() {
         if (overFlow)
             return "Overflow";
-        return "Binary: " + binNum + " | Integer: " + toDecimal();
+        return "Binary: " + Arrays.toString(binNum)
+                .replace("[", "")
+                .replace("]", "")
+                .replace(",", "")
+                + " | Integer: " + toDecimal();
     }
 
     /**
      * Converts the binary number into a decimal value
+     * 
      * @return The decimal value of the binary number
      */
     public int toDecimal() {
         int amount = 0;
-        for (int i = 0; i < binNum.length(); i++) {
-            int digit = Character.getNumericValue(binNum.charAt(i));
+        for (int i = 0; i < binNum.length; i++) {
+            int digit = binNum[i];
             if (digit == 1)
                 amount += Math.pow(2, i);
         }
@@ -77,24 +91,28 @@ public class BinaryNumber {
      * @return The digit of the binary number
      */
     public int getDigit(int index) {
-        return Character.getNumericValue(binNum.charAt(index));
+        return binNum[index];
     }
+
     /**
      * Shifts the number to the left by amount.
      * Adds 0 at the end
+     * 
      * @param amount The amount to shift
      */
     public void shiftL(int amount) {
-        for (int i = 0; i < amount; i++)
-            binNum += "0";
+        binNum = Arrays.copyOf(binNum, binNum.length + amount);
     }
+
     /**
      * The length of the binary number
+     * 
      * @return
      */
     public int getLength() {
-        return binNum.length();
+        return binNum.length;
     }
+
     /**
      * Clears the overflow flag on the binary number
      */
