@@ -41,6 +41,10 @@ public class BinaryNumber {
      * @param other The other binary number
      */
     public void add(BinaryNumber other) {
+        if (getLength() != other.getLength()) {
+            System.out.println("ERROR! Numbers not compatiable.");
+            return;
+        }
         int carry = 0;
         int[] newNum = new int[this.binNum.length];
         for (int i = 0; i < this.binNum.length; i++) {
@@ -68,6 +72,7 @@ public class BinaryNumber {
                 .replace("[", "")
                 .replace("]", "")
                 .replace(",", "")
+                .replace(" ", "")
                 + " | Integer: " + toDecimal();
     }
 
@@ -100,8 +105,12 @@ public class BinaryNumber {
      * 
      * @param amount The amount to shift
      */
-    public void shiftL(int amount) {
-        binNum = Arrays.copyOf(binNum, binNum.length + amount);
+    public void shiftR(int amount) {
+        int[] arr = new int[getLength() + amount];
+        for (int i = amount; i < arr.length; i++) {
+            arr[i] = binNum[i - amount];
+        }
+        binNum = arr;
     }
 
     /**
