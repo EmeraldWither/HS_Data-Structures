@@ -12,5 +12,14 @@ public class BinaryNumbersProgram {
         num3.add(num4);
         num3.clearOverflow();
         System.out.println(num3);
+
     }
+
+    // 10010011
+    // decimal value: 201
+    // shifted right by 3: 0001000
+    // R1 added to B2: 10001011
+    // 0101
+    // Numbers not compatiable
+    // Overflow
 }
