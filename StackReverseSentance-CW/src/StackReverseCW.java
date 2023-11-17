@@ -14,7 +14,6 @@ public class StackReverseCW {
             String s = sent[i];
             stack.push(s);
         }
-        //System.out.println(stack);
         while(stack.size() > 0) {
             String[] s = stack.pop().split(" ");
             for (int i = s.length - 1; i >= 0; i--) {
