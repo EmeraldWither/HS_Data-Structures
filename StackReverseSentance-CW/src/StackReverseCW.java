@@ -6,7 +6,7 @@ public class StackReverseCW {
     public static void main(String[] args) throws Exception {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter sentance: ");
-        String sentance = "Mary had a little lamb. Its fleece was white as snow."; // in.nextLine();
+        String sentance = in.nextLine();
         // add to stack
         Stack<String> stack = new Stack<>();
         String[] sent = sentance.split("\\.");
