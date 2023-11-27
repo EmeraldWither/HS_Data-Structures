@@ -1,3 +1,8 @@
+/*
+ * Ishaan Sayal
+ * Data Structures Period 2
+ * 11/30/23
+ */
 public class CalculatorProgram {
     public static void main(String[] args) throws Exception {
         System.out.println("Value of 3 + 4: " + new Calculator("3 + 4").eval());

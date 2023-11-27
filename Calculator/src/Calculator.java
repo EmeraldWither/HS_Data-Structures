@@ -1,67 +1,130 @@
+/*
+ * Ishaan Sayal
+ * Data Structures Period 2
+ * 11/30/23
+ */
 import java.util.Stack;
 
-public class Calculator {
+/**
+ * Caluclator which evaluates algebric expressions
+ **/
+public class Calculator 
+{
     private String input;
     private final Stack<Integer> num = new Stack<>();
     private final Stack<String> op = new Stack<>();
 
-    public Calculator(String input) {
+    /**
+     * @param input A string representing the algebric expression
+     */
+    public Calculator(String input) 
+    {
+        // replace the parenthesis with a space to split
         input = input.replace("(", "( ");
         input = input.replace(")", " )");
         this.input = input;
     }
 
-    public int eval() {
-        for (String s : input.split(" ")) {
+    //
+    /**
+     * Evalutes the inputted algebric expression.
+     * 
+     * @return The evaluated number
+     */
+    public int eval() 
+    {
+        for (String s : input.split(" ")) 
+        {
             // if you read a number
-            // push it onto the number stack
-            if (isNumber(s)) {
+            if (isNumber(s))
+                // push it onto the number stack
                 num.push(Integer.parseInt(s));
-            }
+
             // else if you read a (
             else if (s.equals("("))
+                // push it onto the operator stack
                 op.push(s);
             // else if you read an operator op
-            else if (isOperator(s)) {
-                while (op.size() > 0 && !isHigherPrecedence(s, op.peek())) {
+            else if (isOperator(s)) 
+            {
+                //while the top is of higher precedence (and is greater than 0)
+                while (op.size() > 0 && !isHigherPrecedence(s, op.peek())) 
+                {
+                    //eval the top
                     evalTop();
                 }
+                //push the operator
                 op.push(s);
-            } else if (s.equals(")")) {
+            } 
+            //if it is a )
+            else if (s.equals(")")) 
+            {
+                //loop until we find a (
                 while (op.size() > 0 && !op.peek().equals("("))
+                    //eval the top
                     evalTop();
+                //remove the (
                 op.pop();
             }
         }
         // no more input
-        while (op.size() > 0) {
+        while (op.size() > 0) 
+        {
+            //eval the rest of the numbers
             evalTop();
         }
+        //return the first number in the stack
         return num.peek();
     }
 
-    private boolean isOperator(String s) {
+    /**
+     * @param s The string to check
+     * @return True if it is an operator (not including parenthesis)
+     */
+    private boolean isOperator(String s) 
+    {
         return s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/");
     }
 
-    private boolean isNumber(String s) {
+    /**
+     * @param s The string to check
+     * @return Checks to see if a string is a number
+     */
+    private boolean isNumber(String s) 
+    {
         boolean isNum = true;
-        try {
+        try 
+        {
             Integer.parseInt(s);
-        } catch (NumberFormatException e) {
+        } 
+        catch (NumberFormatException e) 
+        {
             isNum = false;
         }
         return isNum;
     }
 
-    private boolean isHigherPrecedence(String first, String second) {
+    /**
+     * Checks the peredence in PEMDAS
+     * @param first The operator to check to see if its higher
+     * @param second The operator that is first is comparing to 
+     * @return True if "first" is higher than "second"
+     */
+    private boolean isHigherPrecedence(String first, String second) 
+    {
         if ((first.equals("+") || first.equals("-")) && (second.equals("*") || second.equals("/")))
             return false;
         else
             return true;
     }
 
-    private void evalTop() {
+    /**
+     * Evaluates the top of the stack. 
+     * Pops 2 numbers and an operator. 
+     * Pushes the evaluated num onto the stack.
+     */
+    private void evalTop() 
+    {
         int i2 = num.pop();
         int i1 = num.pop();
         String operator = op.pop();
