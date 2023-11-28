@@ -26,8 +26,6 @@ public class BinaryNumber
 
     /**
      * Creates a binary number which is represented by a string
-     * 
-     * @param num
      */
     public BinaryNumber(String num) 
     {
@@ -48,7 +46,7 @@ public class BinaryNumber
     {
         if (getLength() != other.getLength()) 
         {
-            System.out.println("Numbers not compatiable");
+            System.out.println("Numbers not compatible");
             return;
         }
         int carry = 0;
@@ -96,7 +94,7 @@ public class BinaryNumber
         {
             int digit = binNum[i];
             if (digit == 1)
-                amount += Math.pow(2, i);
+                amount += (int) Math.pow(2, i);
         }
         return amount;
     }
@@ -119,17 +117,12 @@ public class BinaryNumber
     public void shiftR(int amount) 
     {
         int[] arr = new int[getLength() + amount];
-        for (int i = amount; i < arr.length; i++) 
-        {
-            arr[i] = binNum[i - amount];
-        }
+        if (arr.length - amount >= 0) System.arraycopy(binNum, 0, arr, amount, arr.length - amount);
         binNum = arr;
     }
 
     /**
      * The length of the binary number
-     * 
-     * @return
      */
     public int getLength() 
     {

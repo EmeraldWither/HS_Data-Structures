@@ -6,11 +6,11 @@
 import java.util.Stack;
 
 /**
- * Caluclator which evaluates algebric expressions
+ * Calculator, which evaluates algebric expressions
  **/
 public class Calculator 
 {
-    private String input;
+    private final String input;
     private final Stack<Integer> num = new Stack<>();
     private final Stack<String> op = new Stack<>();
 
@@ -27,7 +27,7 @@ public class Calculator
 
     //
     /**
-     * Evalutes the inputted algebric expression.
+     * Evaluates the inputted algebric expression.
      * 
      * @return The evaluated number
      */
@@ -39,7 +39,6 @@ public class Calculator
             if (isNumber(s))
                 // push it onto the number stack
                 num.push(Integer.parseInt(s));
-
             // else if you read a (
             else if (s.equals("("))
                 // push it onto the operator stack
@@ -48,11 +47,9 @@ public class Calculator
             else if (isOperator(s)) 
             {
                 //while the top is of higher precedence (and is greater than 0)
-                while (op.size() > 0 && !isHigherPrecedence(s, op.peek())) 
-                {
+                while (!op.isEmpty() && !isHigherPrecedence(s, op.peek()))
                     //eval the top
                     evalTop();
-                }
                 //push the operator
                 op.push(s);
             } 
@@ -60,7 +57,7 @@ public class Calculator
             else if (s.equals(")")) 
             {
                 //loop until we find a (
-                while (op.size() > 0 && !op.peek().equals("("))
+                while (!op.isEmpty() && !op.peek().equals("("))
                     //eval the top
                     evalTop();
                 //remove the (
@@ -68,11 +65,9 @@ public class Calculator
             }
         }
         // no more input
-        while (op.size() > 0) 
-        {
+        while (!op.isEmpty())
             //eval the rest of the numbers
             evalTop();
-        }
         //return the first number in the stack
         return num.peek();
     }
@@ -105,23 +100,20 @@ public class Calculator
     }
 
     /**
-     * Checks the peredence in PEMDAS
+     * Checks the precedence in PEMDAS
      * @param first The operator to check to see if its higher
      * @param second The operator that is first is comparing to 
      * @return True if "first" is higher than "second"
      */
     private boolean isHigherPrecedence(String first, String second) 
     {
-        if ((first.equals("+") || first.equals("-")) && (second.equals("*") || second.equals("/")))
-            return false;
-        else
-            return true;
+        return (!first.equals("+") && !first.equals("-")) || (!second.equals("*") && !second.equals("/"));
     }
 
     /**
      * Evaluates the top of the stack. 
-     * Pops 2 numbers and an operator. 
-     * Pushes the evaluated num onto the stack.
+     * Pops two numbers and an operator.
+     * Push the evaluated num onto the stack.
      */
     private void evalTop() 
     {
@@ -132,7 +124,7 @@ public class Calculator
         if (operator.equals("+"))
             num.push(i1 + i2);
         if (operator.equals("-"))
-            num.push(i1 + -i2);
+            num.push(i1 - i2);
         if (operator.equals("*"))
             num.push(i1 * i2);
         if (operator.equals("/"))

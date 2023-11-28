@@ -6,8 +6,7 @@
 
 public class BinaryNumbersProgram 
 {
-	public static void main(String[] args) throws Exception 
-	{
+	public static void main(String[] args) {
 		System.out.println("\n===========================================");
 		System.out.println("  All binary numbers are in Little Endian");
 		System.out.println("===========================================\n");
