@@ -16,11 +16,11 @@ public class TodoListHW {
                 list.addTask(new Task(priority, description));
                 System.out.println("Added task!");
             } else if (input.startsWith("next")) {
-                System.out.println("Your next task is: " + list.getTask());
+                System.out.println("Your next task is: " + list.nextTask());
             } else if (input.startsWith("quit"))
                 break;
             else
                 System.out.println("invalid input");
-        }
+        } 
     }
 }

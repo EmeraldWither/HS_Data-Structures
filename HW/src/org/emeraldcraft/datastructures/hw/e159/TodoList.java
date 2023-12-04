@@ -10,7 +10,7 @@ public class TodoList {
     public void addTask(Task task) {
         queue.add(task);
     }
-    public Task getTask() {
+    public Task nextTask() {
         return queue.remove();
     }
 }
