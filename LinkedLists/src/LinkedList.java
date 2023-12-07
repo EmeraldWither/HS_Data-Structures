@@ -20,9 +20,19 @@ public class LinkedList<E> {
             next = next.next;
         return next;
     }
+    public E getR(int n){
+        return getNode(first, n).data;
+    }
+    private Node<E> getNode(Node<E> start, int distance){
+        if(distance == 1) return start;
+        return getNode(start.next, distance - 1);
+    }
 
     public void set(int n, E element) {
         getNode(n).data = element;
+    }
+    public void setR(int n, E element) {
+        getNode(first, n).data = element;
     }
 
     @Override
