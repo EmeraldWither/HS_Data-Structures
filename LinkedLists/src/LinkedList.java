@@ -11,6 +11,7 @@ public class LinkedList<E> {
     }
 
     public E get(int n) {
+        verifyIndex(n);
         return getNode(n).data;
     }
 
@@ -20,19 +21,31 @@ public class LinkedList<E> {
             next = next.next;
         return next;
     }
-    public E getR(int n){
-        return getNode(first, n).data;
-    }
-    private Node<E> getNode(Node<E> start, int distance){
-        if(distance == 1) return start;
+
+    private Node<E> getNode(Node<E> start, int distance) {
+        if (distance == 1)
+            return start;
         return getNode(start.next, distance - 1);
     }
 
     public void set(int n, E element) {
+        verifyIndex(n);
         getNode(n).data = element;
     }
+
+    public E getR(int n) {
+        verifyIndex(n);
+        return getNode(first, n).data;
+    }
+
     public void setR(int n, E element) {
+        verifyIndex(n);
         getNode(first, n).data = element;
+    }
+
+    private void verifyIndex(int n) {
+        if (n < 1 || n > getSize())
+            throw new ArrayIndexOutOfBoundsException(n);
     }
 
     @Override
