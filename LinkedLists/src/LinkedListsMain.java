@@ -1,7 +1,14 @@
-public class App {
+public class LinkedListsMain {
     public static void main(String[] args) throws Exception {
-        withoutRecursion();
-        withRecursion();
+        LinkedList<String> list = new LinkedList<>();
+        list.addFirst("D");
+        list.addFirst("C");
+        list.addFirst("B");
+        list.addFirst("A");
+        System.out.println(list.toString());
+        System.out.println(list.getR(3));
+        list.setR(3, "F");
+        System.out.println(list.getR(3));
     }
 
     public static void withoutRecursion() {
@@ -18,6 +25,7 @@ public class App {
         list.set(3, "F");
         System.out.println(list.toString());
     }
+
     public static void withRecursion() {
         System.out.println("\n ======= ");
         System.out.println("This is WITH recursion.");
@@ -30,6 +38,6 @@ public class App {
         System.out.println(list.toString());
         System.out.println(list.getR(3));
         list.setR(3, "F");
-        System.out.println(list.toString());
+        System.out.println(list.getR(3));
     }
 }
