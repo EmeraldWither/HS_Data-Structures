@@ -10,6 +10,20 @@ public class LinkedList<E> {
         size++;
     }
 
+    public boolean contains(E element) {
+        if (first == null)
+            return false;
+        Node<E> node = first;
+        while (node.next != null) {
+            if (node.data.equals(element))
+                return true;
+            node = node.next;
+        }
+        if (node.data.equals(element))
+            return true;
+        return false;
+    }
+
     public E get(int n) {
         verifyIndex(n);
         return getNode(n).data;
