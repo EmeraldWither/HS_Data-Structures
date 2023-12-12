@@ -62,11 +62,40 @@ public class LinkedList<E> {
             throw new ArrayIndexOutOfBoundsException(n);
     }
 
+    public void reverse() {
+        Node<E> temp1 = first;
+        Node<E> temp2;
+        Node<E> current = temp1.next;
+        temp1.next = null;
+        do {
+            temp2 = current.next;
+            current.next = temp1;
+            if (temp2 == null) {
+                current.next = temp1;
+                temp1.next = null;
+                first = current;
+                break;
+            }
+            if (temp2.next == null) {
+                temp2.next = current;
+                first = temp2;
+                break;
+            }
+            current.next = temp1;
+            temp1 = current;
+            current = temp2;
+            temp2 = current;
+        } while (true);
+    }
+
+    public void print() {
+        System.out.println(this);
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         Node<E> node = first;
-
         while (node.next != null) {
             builder.append(node.data + " ");
             node = node.next;
