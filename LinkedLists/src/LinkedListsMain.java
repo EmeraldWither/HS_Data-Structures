@@ -11,16 +11,13 @@ public class LinkedListsMain {
         list.addFirst("C");
         list.addFirst("B");
         list.addFirst("A");
-        list.print();
-        list.reverse();
-        list.print();
+        System.out.println(list.getSizeR());
     }
     public static void testCase2() {
         LinkedList<String> list = new LinkedList<>();
         list.addFirst("B");
         list.addFirst("A");
-        list.print();
-        list.reverse();
-        list.print();
+        System.out.println(list.getSizeR());
+
     }
 }

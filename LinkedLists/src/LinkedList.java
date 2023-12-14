@@ -108,6 +108,14 @@ public class LinkedList<E> {
     public int getSize() {
         return size;
     }
+    
+    public int getSizeR() {
+        return size(first);
+    }
+    private int size(Node<E> node) {
+        if(node == null) return 0;
+        return 1 + size(node.next);
+    }
 
     class Node<J> {
         public J data;
