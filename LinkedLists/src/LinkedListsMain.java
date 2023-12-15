@@ -1,7 +1,6 @@
 public class LinkedListsMain {
     public static void main(String[] args) throws Exception {
         testCase1();
-        System.out.println();
         testCase2();
     }
     public static void testCase1() {
@@ -15,8 +14,6 @@ public class LinkedListsMain {
     }
     public static void testCase2() {
         LinkedList<String> list = new LinkedList<>();
-        list.addFirst("B");
-        list.addFirst("A");
         System.out.println(list.getSizeR());
 
     }
