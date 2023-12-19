@@ -1,4 +1,3 @@
-import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 public class CircularLinkedList {
@@ -8,13 +7,14 @@ public class CircularLinkedList {
     public void addFirst(Object data) {
         Node node = new Node();
         node.data = data;
-        if (last == null)
+        if (last == null) {
             node.next = node;
+            last = node; 
+        }
         else {
             node.next = last.next;
             last.next = node;
         }
-        last = node;
         currentSize++;
     }
 

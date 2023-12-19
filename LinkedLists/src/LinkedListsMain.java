@@ -1,5 +1,3 @@
-import java.util.ListIterator;
-
 public class LinkedListsMain {
     public static void main(String[] args) throws Exception {
         CircularLinkedList circularLinkedList = new CircularLinkedList();
