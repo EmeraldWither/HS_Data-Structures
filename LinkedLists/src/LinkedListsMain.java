@@ -1,20 +1,16 @@
+import java.util.ListIterator;
+
 public class LinkedListsMain {
     public static void main(String[] args) throws Exception {
-        testCase1();
-        testCase2();
-    }
-    public static void testCase1() {
-        LinkedList<String> list = new LinkedList<>();
-        list.addFirst("E");
-        list.addFirst("D");
-        list.addFirst("C");
-        list.addFirst("B");
-        list.addFirst("A");
-        System.out.println(list.getSizeR());
-    }
-    public static void testCase2() {
-        LinkedList<String> list = new LinkedList<>();
-        System.out.println(list.getSizeR());
+        CircularLinkedList circularLinkedList = new CircularLinkedList();
+        circularLinkedList.addFirst("CCC");
+        circularLinkedList.addLast("BBB");
+        circularLinkedList.addLast("AAA");
+        LinkedListIterator iterator = circularLinkedList.toIterator();
+        for(int i = 0; i < 5; i++) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
 
     }
 }
