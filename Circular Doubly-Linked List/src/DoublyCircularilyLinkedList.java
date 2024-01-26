@@ -4,8 +4,10 @@
  * 1/5/2024
 **/
 
-public class DoublyCircularilyLinkedList {
-    public static void main(String[] args) throws Exception {
+public class DoublyCircularilyLinkedList 
+{
+    public static void main(String[] args) throws Exception 
+    {
         CircularDoubleLinkedList linkedList = new CircularDoubleLinkedList();
         linkedList.addFirst("C");
         linkedList.addFirst("B");
