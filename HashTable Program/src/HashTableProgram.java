@@ -1,12 +1,19 @@
-public class HashTableProgram {
-    public static void main(String[] args) throws Exception {
+/**
+ * Ishaan Sayal
+ * Data Structures Period 2
+ * 1/31/2024
+ */
+
+public class HashTableProgram
+{
+    public static void main(String[] args)
+    {
         HashTable table = new HashTable();
         System.out.println("Step 1: ");
         table.add("H");
         table.add("I");
         table.add("Ugh");
         table.printHashTable();
-
 
         System.out.println("\nStep 2: ");
         table.add("A");
