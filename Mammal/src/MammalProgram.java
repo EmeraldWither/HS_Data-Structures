@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MammalProgram {
-
     private static Node root = new Node();
 
     public static void main(String[] args) throws Exception {
@@ -15,7 +14,7 @@ public class MammalProgram {
         while (true) {
             if (n == null)
                 return;
-            System.out.println(n.data + " (y/n/q)");
+            System.out.print(n.data + " (y/n/q): ");
             String response = in.nextLine();
             if(response.equalsIgnoreCase("q")) break;
             if (response.equalsIgnoreCase("y")) {
@@ -93,12 +92,9 @@ public class MammalProgram {
     }
 
     public static Node loadTree(Node parent, Scanner in) {
-        if (!in.hasNextLine())
-            return null;
+        if (!in.hasNextLine()) return null;
         String input = in.nextLine();
-        if (input.equals(";")) {
-            return null;
-        }
+        if (input.equals(";")) return null;
         Node n = new Node(input);
         n.yes = loadTree(n, in);
         n.no = loadTree(n, in);
