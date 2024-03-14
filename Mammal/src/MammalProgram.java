@@ -89,11 +89,6 @@ public class MammalProgram
     public static void saveTree(String filename) throws IOException
     {
         File file = new File(filename);
-        if(!file.createNewFile())
-        {
-            System.out.println("Unable to save file at " + file.getAbsolutePath());
-            return;
-        }
         FileWriter writer = new FileWriter(file);
         writer.write(treeToString(root));
         writer.close();
