@@ -7,6 +7,7 @@
 public class BinarySeachTree
 {
    private Node root;
+   private int goal;
 
    /**
       Constructs an empty tree.
@@ -134,6 +135,38 @@ public class BinarySeachTree
       if (root != null)
          root.printNodes();
    }
+
+   public Object getIndex(int index) {
+      goal = index;
+      return get(root).data; 
+   }
+   private Node get(Node n){
+      if(n == null) return null;
+      if(goal == 0) return n;
+      goal--;
+      Node node = get(n.left);
+      if(node != null) return node;
+      else return get(n.right);
+   }
+
+   public static boolean isSame(BinarySeachTree tree1, BinarySeachTree tree2){
+      return isSame(tree1.root, tree2.root);
+   }
+   
+   private static boolean isSame(Node l, Node r){
+      if(l == null && r == null) return true;
+      if((l == null) != (r == null) || !isSame(l.left, r.left)) return false;
+      return isSame(l.right, r.right);
+   }
+
+   // private Object[] getNew(Node n, Integer goal){
+   //    if(n == null) return new Object[] {null, goal};
+   //    if(goal == 0) return new Object[] {n.data, goal};
+   //    goal--;
+   //    Object[] data = getNew(n.left, goal);
+   //    if(data[0] != null) return new Object[] {data[0], data[1]}; 
+   //    else return getNew(n.right, (int) data[1]);
+   // }
 
    /**
       A node of a tree stores a data item and references
