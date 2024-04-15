@@ -1,17 +1,21 @@
 public class BinarySearchTreeProgram {
     public static void main(String[] args) throws Exception {
         BinarySeachTree tree1 = new BinarySeachTree();
-        tree1.add("D");
-        tree1.add("C");
-        tree1.add("B");
-        tree1.add("A");
-       
-        BinarySeachTree tree2 = new BinarySeachTree();
-        tree2.add("D");
-        tree2.add("C");
-        tree2.add("B");
-        tree2.add("A");
+        tree1.add(4);
+        tree1.add(2);
+        tree1.add(1);
+        tree1.add(3);
+        tree1.add(6);
+        tree1.add(5);
+        tree1.add(7);
+        
 
-        System.out.println(BinarySeachTree.isSame(tree1, tree2));
+        tree1.preOrder(new OddNumberVisitor());
+        System.out.println();
+        tree1.inOrder(new OddNumberVisitor());
+        System.out.println();
+        tree1.postOrder(new OddNumberVisitor());
+    
+
     }
 }

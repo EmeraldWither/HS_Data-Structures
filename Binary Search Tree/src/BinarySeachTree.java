@@ -140,6 +140,39 @@ public class BinarySeachTree
       goal = index;
       return get(root).data; 
    }
+
+   public void inOrder(Visitor visitor) {
+      inOrder(root, visitor);
+   }
+
+   private void inOrder(Node n, Visitor visitor) {
+      if(n == null) return;
+      inOrder(n.left, visitor);
+      visitor.visit(n.data);
+      inOrder(n.right, visitor);
+   }
+
+   public void preOrder(Visitor visitor) {
+      preOrder(root, visitor);
+   }
+
+   private void preOrder(Node n, Visitor visitor) {
+      if(n == null) return;
+      visitor.visit(n.data);
+      preOrder(n.left, visitor);
+      preOrder(n.right, visitor);
+   }
+
+   public void postOrder(Visitor visitor) {
+      postOrder(root, visitor);
+   }
+
+   private void postOrder(Node n, Visitor visitor) {
+      if(n == null) return;
+      postOrder(n.left, visitor);
+      postOrder(n.right, visitor);
+      visitor.visit(n.data);
+   }
    private Node get(Node n){
       if(n == null) return null;
       if(goal == 0) return n;
