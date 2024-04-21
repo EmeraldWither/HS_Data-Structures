@@ -1,3 +1,9 @@
+/*
+ * Ishaan Sayal
+ * Period 1
+ * 4/18/2024
+ */
+
 //package solution;
 
 import java.util.*;
@@ -9,8 +15,9 @@ public class MinHeap
 {
    private ArrayList<Comparable> elements;
 
-   public ArrayList<Comparable> getRawElements() {
-    return new ArrayList<>(elements);
+   public ArrayList<Comparable> getRawElements() 
+   {
+      return new ArrayList<>(elements);
    }
 
    /**

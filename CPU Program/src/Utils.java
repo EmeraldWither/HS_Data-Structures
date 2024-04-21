@@ -1,4 +1,10 @@
-public class Utils {
+/*
+ * Ishaan Sayal
+ * Period 1
+ * 4/18/2024
+ */
+public class Utils 
+{
     public static void loadingAnimation(String during, String end, double duration) 
     {
         //get our duration for the animations loop
