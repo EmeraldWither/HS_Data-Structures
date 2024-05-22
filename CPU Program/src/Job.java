@@ -41,7 +41,7 @@ public class Job implements Comparable
             System.out.println("Ran Free CPU.");
             return;
         }
-        String finishStr = length - 1 == 0 ? "This job has fully finished." : "This job has " + (length - 1) + " cycle(s) left.";
+        String finishStr = length - 1 == 0 ? "Job " + name + " has fully finished." : "Job " + name + " has " + (length - 1) + " cycle(s) left.";
         Utils.loadingAnimation("Executing " + name, finishStr,  3);
         length--;
     }

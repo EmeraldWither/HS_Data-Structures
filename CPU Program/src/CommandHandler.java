@@ -21,7 +21,7 @@ public class CommandHandler
     }
     private void prompt()
     {
-        System.out.print("Ishaan Sayal @ 127.0.0.1: ~$ ");
+        System.out.print("Ishaan Sayal@LAPTOP_MHS:~$ ");
         String cmdStr = in.nextLine();
         String[] cmd = cmdStr.split(" ");
         if(cmd[0].equalsIgnoreCase("add")) 
@@ -74,6 +74,18 @@ public class CommandHandler
         if(cmd.length != 4 || !isInteger(cmd[2]) || !isInteger(cmd[3])) 
         {
             System.out.println("ERROR: Invalid Command. Format: add job_name priority length");
+            prompt();
+            return;
+        }
+        if(Integer.parseInt(cmd[2]) < 1 || Integer.parseInt(cmd[2]) > 10)
+        {
+            System.out.println("ERROR: Invalid priority. Must be between 1 and 10");
+            prompt();
+            return;
+        }
+        if(Integer.parseInt(cmd[3]) < 1)
+        {
+            System.out.println("ERROR: Invalid length. Must be greater than 0.");
             prompt();
             return;
         }

@@ -1,0 +1,4 @@
+Hello Data Structure Class.
+IF you are reading this then you might be on your way to completing this program.
+Then again if you are reading this then you might be stuck. 
+FIO
