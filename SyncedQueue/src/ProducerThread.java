@@ -13,6 +13,7 @@ public class ProducerThread implements Runnable {
             String d = new Date().toString();
             queue.add(d);
             System.out.println("Added (" + i + ") " + d + " " + queue.getSize());
+
         }
     }
 

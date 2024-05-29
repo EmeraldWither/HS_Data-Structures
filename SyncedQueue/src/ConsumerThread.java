@@ -10,6 +10,7 @@ public class ConsumerThread implements Runnable {
         for(int i = 0; i < 100; i++) {
             String s = queue.remove();
             System.out.println("Removed (" + i + ") " + s + " " + queue.getSize());
+
         }
     }
 
